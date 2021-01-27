@@ -1,0 +1,195 @@
+$primary-font: "Karla", sans-serif;
+$secondary-font: "Ubuntu", sans-serif;
+$primary-color: pink;
+$secondary-color: black;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+// I have to make classes for butttons and borders
+.smooth-border {
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+}
+.search-field {
+  padding: 1em;
+  background: rgb(221, 221, 221);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.center-txt-2-section {
+  padding: 1em;
+  margin: 1em;
+  text-align: center;
+}
+
+.center-content {
+  width: 90%;
+}
+.search-bar {
+  // border: black 2px solid;
+  padding: 1em;
+  margin: 1em;
+  text-align: center;
+}
+.center-txt-2-section h1 {
+  font-size: 3rem;
+  font-family: $primary-font;
+  color: white;
+}
+form {
+  margin: auto;
+}
+.search-value {
+  width: 40%;
+}
+.second-container {
+  height: 100vh;
+  background-color: indianred;
+}
+.third-container {
+  height: 100vh;
+  background-color: lightskyblue;
+}
+.fourth-container {
+  height: 100vh;
+  background-color: orchid;
+}
+/*
+*---------------------------------------------------------
+* ///---------------Footer---------------///
+* --------------------------------------------------------
+*/
+.footer {
+  width: 100%;
+  height: 30vh;
+  background-color: rgb(97, 95, 95);
+}
+.bx {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content-box {
+  height: 80%;
+  // border: blue 4px solid;
+  max-width: 90%;
+  display: flex;
+}
+.text-content {
+  width: 50%;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  // opacity: 0;
+  // transform: translateY(2em);
+  // transition: 0.5s all ease-in-out;
+}
+// .text-content-appear {
+//   opacity: 1;
+//   transform: translateY(0rem);
+// }
+img {
+  width: 100%;
+  height: 100%;
+}
+.image-content {
+  // border: seagreen 5px solid;
+  width: 50%;
+}
+.heading {
+  font-family: $primary-font;
+  font-size: 3.5rem;
+  margin: 1em 0;
+}
+.para-box {
+  font-family: $secondary-font;
+  font-size: 1.1rem;
+  letter-spacing: 0.001rem;
+  line-height: 1.5rem;
+}
+.footer-link {
+  font-size: 1.1rem;
+  letter-spacing: 0.01rem;
+  font-family: $secondary-font;
+  // margin: 1em;
+  padding: 1em;
+  text-decoration: underline;
+}
+.search-info-hide {
+  opacity: 0;
+  text-align: center;
+  font-family: $primary-font;
+  color: white;
+  font-size: 1.2rem;
+  letter-spacing: 0.01rem;
+}
+.search-info-show {
+  text-align: center;
+  font-family: $primary-font;
+  color: white;
+  font-size: 1.2rem;
+  letter-spacing: 0.01rem;
+  opacity: 1;
+  // pointer-events: none;
+}
+.meaning-container {
+  background-color: white;
+  height: 50vh;
+}
+body {
+  //First Section of Page
+  background-image: url("../../Images/knowladge-room-2.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  .first-section {
+    height: 100vh;
+    // background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+  }
+  .container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .quotion-mark {
+      font-size: 2rem;
+    }
+  }
+
+  .center-text {
+    border-radius: 1.5rem 1.5rem 0 1.5rem;
+    background-color: coral;
+    padding: 1em;
+    max-width: 80%;
+    text-align: center;
+    font-family: $secondary-font;
+    font-size: 1rem;
+    color: white;
+    letter-spacing: 0.01rem;
+  }
+
+  .quote-author {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.5rem;
+  }
+  .second-section {
+    height: 25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+@import "navbar";
+
+/*
+*---------------------------------------------------------
+* ///---------------Media query(Responsive website)---------------///
+* --------------------------------------------------------
+*/

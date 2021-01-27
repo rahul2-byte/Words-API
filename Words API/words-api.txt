@@ -1,0 +1,7 @@
+"definition":"a representative form or pattern"
+"partOfSpeech":"noun"
+"synonyms":[...]1 item
+"typeOf":[...]3 items
+"hasTypes":[...]16 items
+"derivation":[...]1 item
+"examples":[...]1 item

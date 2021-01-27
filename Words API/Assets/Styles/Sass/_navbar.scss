@@ -1,0 +1,18 @@
+.nav {
+  font-family: $primary-font;
+  height: 3rem;
+  display: flex;
+  background-color: #251e3e;
+  .nav-bar {
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    .logo {
+      text-transform: uppercase;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.1rem;
+    }
+  }
+}
