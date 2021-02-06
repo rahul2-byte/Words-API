@@ -2,7 +2,34 @@ $primary-font: "Karla", sans-serif;
 $secondary-font: "Ubuntu", sans-serif;
 $primary-color: pink;
 $secondary-color: black;
-
+/*
+*---------------------------------------------------------
+* ///---------------Utilities Classes---------------///
+* --------------------------------------------------------
+*/
+.mxy-1 {
+  margin: 0.5em 1em;
+}
+.mxy-2 {
+  margin: 1em 2em;
+}
+.mxy-3 {
+  margin: 2em 3em;
+}
+.pxy-1 {
+  padding: 0.5em 1em;
+}
+.pxy-2 {
+  padding: 1em 2em;
+}
+.pxy-3 {
+  padding: 2em 3em;
+}
+/*
+*---------------------------------------------------------
+* ///---------------Utilities Classes---------------///
+* --------------------------------------------------------
+*/
 * {
   margin: 0;
   padding: 0;
@@ -64,9 +91,14 @@ form {
 * --------------------------------------------------------
 */
 .footer {
+  color: white;
   width: 100%;
   height: 30vh;
-  background-color: rgb(97, 95, 95);
+  background-color: black;
+  a {
+    text-decoration: underline;
+    color: white;
+  }
 }
 .bx {
   display: flex;
@@ -98,7 +130,6 @@ img {
   height: 100%;
 }
 .image-content {
-  // border: seagreen 5px solid;
   width: 50%;
 }
 .heading {
@@ -137,10 +168,40 @@ img {
   opacity: 1;
   // pointer-events: none;
 }
+/*
+*---------------------------------------------------------
+* ///---------------Meaning Container---------------///
+* --------------------------------------------------------
+*/
 .meaning-container {
+  height: fit-content;
   background-color: white;
-  height: 50vh;
+  .main-aria {
+    width: 80%;
+    margin: auto;
+    padding: 2em;
+    height: fit-content;
+    .bold-words {
+      font-size: 1.5rem;
+      font-weight: 600;
+      font-family: fantasy;
+      .small-words {
+        font-size: 1.2rem;
+        font-family: sans-serif;
+      }
+    }
+  }
 }
+
+.Meaning-display-none {
+  display: none;
+  pointer-events: none;
+}
+/*
+*---------------------------------------------------------
+* ///---------------Meaning Container---------------///
+* --------------------------------------------------------
+*/
 body {
   //First Section of Page
   background-image: url("../../Images/knowladge-room-2.jpg");
