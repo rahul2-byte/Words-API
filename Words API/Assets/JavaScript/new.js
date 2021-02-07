@@ -1,69 +1,91 @@
+/*
+ *---------------------------------------------------------
+ * /// API call for fetching Quotes.(@Start) ///
+ * --------------------------------------------------------
+ */
 window.addEventListener("load", () => {
   fetch("https://type.fit/api/quotes")
     .then((response) => {
-      console.log(response);
       return response.json();
     })
     .then((data) => {
       const number = Math.floor(Math.random() * data.length);
-      console.log(number);
       const center_txt = document.querySelector(".main-text");
+      const quote_author = document.querySelector(".quote-author");
       center_txt.innerHTML = `&#8220` + data[number].text + ` &#8221`;
+      quote_author.textContent = `-- ${data[number].author}`;
     })
     .catch((error) => {
       console.log(error);
     });
 });
-// const search_input_value = document.querySelector(".search-value").value;
-// console.log("h2");
-// console.log(search_input_value);
-// console.log("hlw");
+/*
+ *---------------------------------------------------------
+ * /// API call for fetching Quotes.(@End) ///
+ * --------------------------------------------------------
+ */
 
-// Event trigers when we search the word.
+/*
+ *---------------------------------------------------------
+ * /// Event trigers when we search the word.(@Start) ///
+ * --------------------------------------------------------
+ */
 {
   const form = document.querySelector("form");
   const inputVar = document.querySelector("input[type = text]");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log(inputVar.value.trim());
-    const Meaningdiv = document.querySelector(".meaning-container");
-    console.log(Meaningdiv);
-    // Checking if Meaning div is present in DOM tree
+    // console.log(inputVar.value.trim());
     if (!inputVar.value.trim()) {
       const search_info = document.getElementById("search-info"); // Get the info for search-bar.
       search_info.className = "search-info-show";
-      const meaning_div = document.querySelector(".meaning-container");
-      console.log(meaning_div);
-      meaning_div.className = "Meaning-display-none";
       /*
        * To remove the Meaning div from page.
+       * Whether is exists or not.
        */
+      const Meaningdiv = document.querySelector(".meaning-container");
+      Meaningdiv.remove();
     } else {
+      const Meaningdiv = document.querySelector(".meaning-container");
+      // console.log(Meaningdiv);
+      // Checking if Meaning div is present in DOM tree
       if (typeof Meaningdiv !== undefined && Meaningdiv !== null) {
         console.log("Here ELement is present.");
+        const returneddata = fetchdata(inputVar.value).then((data) => {
+          console.log(data);
+        });
       } else {
-        /*
-         *To Create the Meaning div.
-         */
-        const search_info = document.getElementById("search-info");
-        search_info.className = "search-info-hide";
-        meaningDiv(); // Calling function to create  div for Meanings.
+        // console.log(inputVar.value.trim());
+        const returneddata = fetchdata(inputVar.value).then((data) => {
+          console.log(data);
+          /*
+           *To Create the Meaning div.
+           */
+          const search_info = document.getElementById("search-info");
+          search_info.className = "search-info-hide";
+          meaningDiv(); // Calling function to create  div for Meanings.
+        });
       }
     }
   });
 }
+/*
+ *---------------------------------------------------------
+ * /// Event trigers when we search the word.(@End) ///
+ * --------------------------------------------------------
+ */
 
 /*
  *---------------------------------------------------------
- * /// Function to create Meaning Div.///
+ * /// Function to create Meaning Div.(@Start)///
  * --------------------------------------------------------
  */
 
 const meaningDiv = function () {
   const body = document.querySelector(".main");
-  console.log(body.children);
   const div = document.createElement("div");
   div.className = "meaning-container";
+  const TxtNode = document.createTextNode(div);
   div.innerHTML = `<div class="meaning-container">
   <div class="main-aria">
       <p class="definitions mxy-1 pxy-1 bold-words" id="Searched-word" > Word : <span class="span-definitions small-words" id="word-definition"> Defi </span></p>
@@ -72,32 +94,43 @@ const meaningDiv = function () {
       <p class="examples mxy-1 pxy-1 bold-words"> Example : <span class="span-example small-words" id="word-example"> Word examples </span></p>
   </div>
 </div>`;
-  const TxtNode = document.createTextNode(div);
   div.appendChild(TxtNode);
   body.insertBefore(div, body.children[5]);
 };
-
-// const search_value = document.getElementsByClassName("submit-button").value;
-// const option_element = document.getElementsByClassName("options");
-// option_value = option_element.options[option_element.selectedIndex].value;
-// console.log(`${search_value} ##### ${option_value}`);
-// const proxy = "https://cors-anywhere.herokuapp.com/";
-// fetch(`${proxy}https://od-api.oxforddictionaries.com/api/v2`, {
-//   method: "POST",
-//   headers: {
-//     "app-key": "2b5b0c1888c92c462978ea102494502e",
-//     "app-id": "7986711e",
-//   },
-// })
-//   .then((response) => {
-//     return response.json();
-//   })
-//   .then((data) => {
-//     console.log(data);
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   });
-//   },
-//   false
-// );
+/*
+ *---------------------------------------------------------
+ * /// Function to create Meaning Div.(@End)///
+ * --------------------------------------------------------
+ */
+/*
+ *---------------------------------------------------------
+ * /// Callback Function to Fetch the data from Words API.(@Start)///
+ * --------------------------------------------------------
+ */
+const fetchdata = function (inputvalue) {
+  console.log(`${inputvalue} This value is present in fetchdata function.`);
+  // const proxy = "https://cors-anywhere.herokuapp.com/";
+  return fetch(`https://wordsapiv1.p.rapidapi.com/words/${inputvalue}`, {
+    method: "GET",
+    headers: {
+      "x-rapidapi-key": "45f5ed5258msha1bf193911617d1p1b6bb5jsn37995cada708",
+      "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      // console.log(data);
+      // console.log(data.results);
+      return data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+/*
+ *---------------------------------------------------------
+ * /// Callback Function to Fetch the data from Words API.(@End)///
+ * --------------------------------------------------------
+ */
