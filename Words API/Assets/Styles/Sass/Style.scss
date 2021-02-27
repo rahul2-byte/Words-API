@@ -93,7 +93,7 @@ form {
 .footer {
   color: white;
   width: 100%;
-  height: 30vh;
+  height: 10vh;
   background-color: black;
   a {
     text-decoration: underline;
@@ -174,12 +174,17 @@ img {
 * --------------------------------------------------------
 */
 .meaning-container {
+  .meaning-container1 {
+    margin: 1rem 0;
+  }
+  width: 80%;
   height: fit-content;
   background-color: white;
+  margin: auto;
   .main-aria {
-    width: 80%;
+    width: 90%;
     margin: auto;
-    padding: 2em;
+    padding: 1em;
     height: fit-content;
     .bold-words {
       font-size: 1.5rem;

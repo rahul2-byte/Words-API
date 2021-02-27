@@ -52,18 +52,70 @@ window.addEventListener("load", () => {
       if (typeof Meaningdiv !== undefined && Meaningdiv !== null) {
         console.log("Here ELement is present.");
         const returneddata = fetchdata(inputVar.value).then((data) => {
-          console.log(data);
+          // console.log(data);
+          const length = data.results.length;
+          for (let i = 1; i <= length; i++) {
+            meaningDiv(); // Calling function to create  div for Meanings.
+            const {
+              definition,
+              partOfSpeech,
+              synonyms,
+              examples,
+            } = data.results[i];
+            const word_definition = document.getElementById("word-definition");
+            word_definition.textContent = definition;
+            const partofspeech = document.getElementById("word-partofspeech");
+            partofspeech.textContent = partOfSpeech;
+            const word_synonyms = document.getElementById("word-synonyms");
+            if (!synonyms) {
+              word_synonyms.textContent = synonyms;
+            } else {
+              word_synonyms.textContent = "Nothing";
+            }
+            const word_examples = document.getElementById("word-example");
+            if (!examples) {
+              word_examples.textContent = "Nothing to show";
+            } else {
+              word_examples.textContent = examples;
+            }
+          }
         });
       } else {
         // console.log(inputVar.value.trim());
         const returneddata = fetchdata(inputVar.value).then((data) => {
-          console.log(data);
+          console.log(data.results);
           /*
            *To Create the Meaning div.
            */
           const search_info = document.getElementById("search-info");
           search_info.className = "search-info-hide";
-          meaningDiv(); // Calling function to create  div for Meanings.
+
+          /*
+           *To Create the Meaning div.
+           */
+          const length = data.results.length;
+          for (let i = 1; i <= length; i++) {
+            meaningDiv(); // Calling function to create  div for Meanings.
+            const {
+              definition,
+              partOfSpeech,
+              synonyms,
+              examples,
+            } = data.results[i];
+            const word_definition = document.getElementById("word-definition");
+            word_definition.textContent = definition;
+            const partofspeech = document.getElementById("word-partofspeech");
+            partofspeech.textContent = partOfSpeech;
+            const word_synonyms = document.getElementById("word-synonyms");
+            word_synonyms.textContent = synonyms;
+            const word_examples = document.getElementById("word-example");
+            if (examples) {
+              word_examples.textContent = " nothing to show";
+            } else {
+              word_examples.textContent = examples;
+            }
+          }
+          console.log(length);
         });
       }
     }
@@ -85,16 +137,14 @@ const meaningDiv = function () {
   const body = document.querySelector(".main");
   const div = document.createElement("div");
   div.className = "meaning-container";
-  const TxtNode = document.createTextNode(div);
-  div.innerHTML = `<div class="meaning-container">
+  div.innerHTML = `<div class="meaning-container1">
   <div class="main-aria">
-      <p class="definitions mxy-1 pxy-1 bold-words" id="Searched-word" > Word : <span class="span-definitions small-words" id="word-definition"> Defi </span></p>
-      <p class="partsofspeech mxy-1 pxy-1 bold-words"> Part of Speech : <span class="span-partofspeech small-words" id="word-partofspeech"> Noun </span></p>
-      <p class="synonyms mxy-1 pxy-1 bold-words"> Synonyms : <span class="span-synonyms small-words" id="word-synonyms"> Synonyms </span></p>
-      <p class="examples mxy-1 pxy-1 bold-words"> Example : <span class="span-example small-words" id="word-example"> Word examples </span></p>
+      <p class="definitions mxy-1 pxy-1 bold-words" id="Searched-word" > Definition : <span class="span-definitions small-words" id="word-definition"> Defi </span></p>
+      <p class="partsofspeech mxy-1 pxy-1 bold-words"> Part of Speech : <span class="span-partofspeech small-words" id="word-partofspeech">  </span></p>
+      <p class="synonyms mxy-1 pxy-1 bold-words"> Synonyms : <span class="span-synonyms small-words" id="word-synonyms">  </span></p>
+      <p class="examples mxy-1 pxy-1 bold-words"> Example : <span class="span-example small-words" id="word-example"> Nothing for example. </span></p>
   </div>
 </div>`;
-  div.appendChild(TxtNode);
   body.insertBefore(div, body.children[5]);
 };
 /*
@@ -122,7 +172,7 @@ const fetchdata = function (inputvalue) {
     })
     .then((data) => {
       // console.log(data);
-      // console.log(data.results);
+      // console.log(data.results.length);
       return data;
     })
     .catch((err) => {
