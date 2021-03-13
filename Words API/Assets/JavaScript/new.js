@@ -43,8 +43,8 @@ window.addEventListener("load", () => {
        * To remove the Meaning div from page.
        * Whether is exists or not.
        */
-      const Meaningdiv = document.querySelector(".meaning-container");
-      Meaningdiv.remove();
+      const meaningContainer = document.querySelector(".container");
+      meaningContainer.remove(); // changed meaningdiv to meaningcontainer.
     } else {
       const Meaningdiv = document.querySelector(".meaning-container");
       // console.log(Meaningdiv);
@@ -54,6 +54,7 @@ window.addEventListener("load", () => {
         const returneddata = fetchdata(inputVar.value).then((data) => {
           // console.log(data);
           const length = data.results.length;
+          meaningContainer(); //Creating one container for all meaning boxes.
           for (let i = 1; i <= length; i++) {
             meaningDiv(); // Calling function to create  div for Meanings.
             const {
@@ -70,11 +71,11 @@ window.addEventListener("load", () => {
             if (!synonyms) {
               word_synonyms.textContent = synonyms;
             } else {
-              word_synonyms.textContent = "Nothing";
+              word_synonyms.textContent = "U/A";
             }
             const word_examples = document.getElementById("word-example");
             if (!examples) {
-              word_examples.textContent = "Nothing to show";
+              word_examples.textContent = "U/A";
             } else {
               word_examples.textContent = examples;
             }
@@ -93,6 +94,7 @@ window.addEventListener("load", () => {
           /*
            *To Create the Meaning div.
            */
+          meaningContainer(); //Creating one container for all meaning boxes.
           const length = data.results.length;
           for (let i = 1; i <= length; i++) {
             meaningDiv(); // Calling function to create  div for Meanings.
@@ -132,9 +134,15 @@ window.addEventListener("load", () => {
  * /// Function to create Meaning Div.(@Start)///
  * --------------------------------------------------------
  */
+const meaningContainer = function () {
+  const body = document.querySelector(".main");
+  const divContainer = document.createElement("div");
+  div.className = "container";
+  body.insertBefore(div, body.children[5]);
+};
 
 const meaningDiv = function () {
-  const body = document.querySelector(".main");
+  const meaningbox = document.querySelector(".container");
   const div = document.createElement("div");
   div.className = "meaning-container";
   div.innerHTML = `<div class="meaning-container1">
@@ -145,7 +153,7 @@ const meaningDiv = function () {
       <p class="examples mxy-1 pxy-1 bold-words"> Example : <span class="span-example small-words" id="word-example"> Nothing for example. </span></p>
   </div>
 </div>`;
-  body.insertBefore(div, body.children[5]);
+  body.insertBefore(div, body.children[5]); //Change required
 };
 /*
  *---------------------------------------------------------
