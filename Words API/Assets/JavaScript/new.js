@@ -170,10 +170,7 @@ const fetchdata = function (inputvalue) {
   // const proxy = "https://cors-anywhere.herokuapp.com/";
   return fetch(`https://wordsapiv1.p.rapidapi.com/words/${inputvalue}`, {
     method: "GET",
-    headers: {
-      "x-rapidapi-key": "45f5ed5258msha1bf193911617d1p1b6bb5jsn37995cada708",
-      "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
-    },
+    headers: {},
   })
     .then((response) => {
       return response.json();
